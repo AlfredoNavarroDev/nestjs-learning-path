@@ -1,0 +1,17 @@
+{
+  "name": "semana-1-typescript-nest",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dia1": "tsc && node dist/dia1-tipos.js",
+    "dia3": "tsc && node dist/dia3-libro.js",
+    "dia4": "tsc && node dist/dia4-decorators.js"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  }
+}
