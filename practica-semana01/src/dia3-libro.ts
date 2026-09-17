@@ -3,13 +3,17 @@
 // ── TODO 1: interface ──────────────────────────────────────────
 interface LibroInterface {
   // TODO: titulo: string
+  titulo: string,
   // TODO: autor: string
+  autor: string
 }
 
 // ── TODO 2: type ───────────────────────────────────────────────
 type LibroType = {
   // TODO: titulo: string
+  titulo: string,
   // TODO: autor: string
+  autor: string
 };
 
 // ── Ya completo: clase ─────────────────────────────────────────

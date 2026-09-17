@@ -26,15 +26,20 @@ interface Paginado<T> {
 // ── TODO 1: función genérica ───────────────────────────────────
 function paginate<T>(items: T[], page: number, size = 10): Paginado<T> {
   // TODO: const start = (page - 1) * size
+  const start: number = (page - 1) * size;
   // TODO: return { items: items.slice(start, start + size), page, total: items.length }
-  throw new Error('TODO: implementar paginate');
+  return {
+    items: items.slice(start, start + size),
+    page,
+    total: items.length
+  }
 }
 
 // ── TODO 2: utility types ──────────────────────────────────────
 // Reemplazá `any` por el utility type correcto.
-type LibroCrear = any; // TODO: Omit<Libro, 'id'>
-type LibroEditar = any; // TODO: Partial<Libro>
-type LibroIdTitulo = any; // TODO: Pick<Libro, 'id' | 'titulo'>
+type LibroCrear = Omit<Libro, 'id'>; // TODO: Omit<Libro, 'id'>
+type LibroEditar = Partial<Libro>; // TODO: Partial<Libro>
+type LibroIdTitulo = Pick<Libro, 'id' | 'titulo'>; // TODO: Pick<Libro, 'id' | 'titulo'>
 
 // ── Verificación ───────────────────────────────────────────────
 // Al terminar, `npm run dia1` debe imprimir sin lanzar error:

@@ -10,7 +10,12 @@ function LogInstancia<T extends { new (...args: any[]): object }>(ctor: T): T {
   //           console.log(`[instancia] ${ctor.name} creado`);
   //         }
   //       } as T
-  return ctor;
+  return class extends ctor {
+    constructor(...args: any[]) {
+      super(...args);
+      console.log(`[instancia] ${ctor.name} creado`);
+    }
+  } as T;
 }
 
 // ── TODO 2: decorator de método ────────────────────────────────
@@ -21,7 +26,14 @@ function MedirTiempo(
   descriptor: PropertyDescriptor,
 ): PropertyDescriptor {
   // TODO: const original = descriptor.value
+  const original = descriptor.value;
   // TODO: descriptor.value = function (...args: any[]) { medir Date.now() y loguear }
+  descriptor.value = function (...args: any[]) {
+    const inicio = Date.now();
+    const resultado = original.apply(this, args);
+    console.log(`[método] ${propertyKey} tardó ${Date.now() - inicio}ms`);
+    return resultado;
+  };
   return descriptor;
 }
 
@@ -29,6 +41,7 @@ function MedirTiempo(
 // Debe adjuntar metadata con Reflect.defineMetadata.
 function Timestamp(target: any, propertyKey: string): void {
   // TODO: Reflect.defineMetadata('timestamp', Date.now(), target, propertyKey)
+  Reflect.defineMetadata('timestamp', Date.now(), target, propertyKey);
 }
 
 @LogInstancia
