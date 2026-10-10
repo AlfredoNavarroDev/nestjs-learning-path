@@ -15,33 +15,33 @@ npm run build
 ### 1. `src/main.ts` — bootstrap y config global
 **Propósito:** `NestFactory.create` + prefijo + CORS (tu `SpringApplication.run`).
 **Archivos:** `src/main.ts`
-- [ ] Descomentar `app.setGlobalPrefix('api')`
-- [ ] Descomentar `app.enableCors()`
+- [x] Descomentar `app.setGlobalPrefix('api')`
+- [x] Descomentar `app.enableCors()`
 
 ### 2. `src/libros/libros.module.ts` y `src/autores/autores.module.ts` — módulos de feature
 **Propósito:** encapsular cada feature (el `@Module` = tu paquete por feature en Spring).
 **Archivos:** `src/libros/libros.module.ts`, `src/autores/autores.module.ts`
-- [ ] Registrar `LibrosController` en `controllers`
-- [ ] Registrar `AutoresController` en `controllers`
+- [x] Registrar `LibrosController` en `controllers`
+- [x] Registrar `AutoresController` en `controllers`
 
 ### 3. `src/app.module.ts` — ensamblar el grafo
 **Propósito:** Nest no escanea; el módulo raíz importa los feature modules explícitamente.
 **Archivos:** `src/app.module.ts`
-- [ ] Agregar `imports: [LibrosModule, AutoresModule]`
+- [x] Agregar `imports: [LibrosModule, AutoresModule]`
 
 ### 4. `src/libros/libros.controller.ts` — CRUD con decoradores de ruta
 **Propósito:** mapear rutas con `@Get/@Post/@Delete` + `@Param/@Query/@Body` (tu `@RestController`).
 **Archivos:** `src/libros/libros.controller.ts`
-- [ ] `findAll`: filtrar por `prestado` si viene el query param
-- [ ] `findOne`: devolver el libro por `id`
-- [ ] `create`: crear libro con id nuevo y devolverlo (201)
-- [ ] `remove`: eliminar por `id` (204)
+- [x] `findAll`: filtrar por `prestado` si viene el query param
+- [x] `findOne`: devolver el libro por `id`
+- [x] `create`: crear libro con id nuevo y devolverlo (201)
+- [x] `remove`: eliminar por `id` (204)
 
 ### 5. `src/autores/autores.controller.ts` — GET de autores
 **Propósito:** consolidar `@Get` + `@Param`.
 **Archivos:** `src/autores/autores.controller.ts`
-- [ ] `findAll` devuelve todos los autores
-- [ ] `findOne` devuelve el autor por `id`
+- [x] `findAll` devuelve todos los autores
+- [x] `findOne` devuelve el autor por `id`
 
 Después de terminar:
 
@@ -54,8 +54,8 @@ Debe devolver los 3 libros.
 
 ## Checklist de cierre
 
-- [ ] Explico modular (Nest) vs capas (Spring)
-- [ ] Cableo 2 módulos de feature al módulo raíz
-- [ ] Escribo un CRUD con decoradores de ruta
-- [ ] Sé qué va en `imports`/`controllers`/`providers`/`exports`
-- [ ] Explico cuándo un módulo es dinámico vs estático
+- [x] Explico modular (Nest) vs capas (Spring)
+- [x] Cableo 2 módulos de feature al módulo raíz
+- [x] Escribo un CRUD con decoradores de ruta
+- [x] Sé qué va en `imports`/`controllers`/`providers`/`exports`
+- [x] Explico cuándo un módulo es dinámico vs estático

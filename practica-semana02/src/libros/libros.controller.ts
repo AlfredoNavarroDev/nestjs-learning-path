@@ -28,25 +28,41 @@ export class LibrosController {
   @Get()
   findAll(@Query('prestado') prestado?: string): Libro[] {
     // ── TODO 5: si viene `prestado`, filtrar; si no, devolver todos ──
+    if (prestado !== undefined) {
+      return libros.filter((libro) => libro.prestado === (prestado === 'true'));
+    }
     return libros;
   }
 
   @Get(':id')
   findOne(@Param('id') id: string): Libro | undefined {
     // ── TODO 6: devolver el libro con ese id ───────────────────
-    return undefined;
+    return libros.find((libro) => libro.id === id);
   }
 
   @Post()
   @HttpCode(201)
   create(@Body() body: Omit<Libro, 'id'>): Libro {
     // ── TODO 7: crear libro con id nuevo y agregarlo a `libros` ──
-    throw new Error('TODO: implementar create');
+    const nuevoLibro: Libro = {
+      id: (libros.length + 1).toString(),
+      titulo: body.titulo,
+      autor: body.autor,
+      prestado: body.prestado,
+    };
+
+    libros.push(nuevoLibro);
+
+    return nuevoLibro;
   }
 
   @Delete(':id')
   @HttpCode(204)
   remove(@Param('id') id: string): void {
     // ── TODO 8: eliminar el libro con ese id ───────────────────
+    const index = libros.findIndex(libro => libro.id === id);
+    if (index !== -1) {
+      libros.splice(index, 1);
+    }
   }
 }

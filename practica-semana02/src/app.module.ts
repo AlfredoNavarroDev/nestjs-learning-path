@@ -6,7 +6,7 @@ import { AutoresModule } from './autores/autores.module';
 
 @Module({
   // ── TODO 3: conectar los módulos de feature al módulo raíz ──
-  // imports: [LibrosModule, AutoresModule],
+  imports: [LibrosModule, AutoresModule],
   controllers: [AppController],
   providers: [AppService],
 })

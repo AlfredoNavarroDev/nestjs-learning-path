@@ -18,12 +18,12 @@ export class AutoresController {
   @Get()
   findAll(): Autor[] {
     // ── TODO 10: devolver todos los autores ────────────────────
-    return [];
+    return autores;
   }
 
   @Get(':id')
   findOne(@Param('id') id: string): Autor | undefined {
     // ── TODO 11: devolver el autor con ese id ──────────────────
-    return undefined;
+    return autores.find((autor) => autor.id === id);
   }
 }

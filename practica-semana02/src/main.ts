@@ -7,9 +7,11 @@ async function bootstrap() {
 
   // ── TODO 1: prefijo global de rutas ─────────────────────────
   // app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api');
 
   // ── TODO 2: habilitar CORS ──────────────────────────────────
   // app.enableCors();
+  app.enableCors();
 
   await app.listen(3000);
 }
